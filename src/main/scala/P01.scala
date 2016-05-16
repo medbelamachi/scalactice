@@ -20,10 +20,12 @@ object P01_28 {
   }
 
   //p04
-  def length(ls: List[Int]): Int = ls match {
+  def length(ls: List[Int]): Int = ls.foldLeft(0) { (c, _) => c + 1 }
+
+  /*def length(ls: List[Int]): Int = ls match {
     case Nil => 0
     case _ => 1 + length(ls.tail)
-  }
+  }*/
 
   //def length(ls: List[Int]): Int = ls.size
 
