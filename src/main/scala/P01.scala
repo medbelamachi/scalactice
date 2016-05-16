@@ -6,8 +6,11 @@ object P01_28 {
 
 
   def main(args: Array[String]): Unit = {
+    //p06
+    println(isPalindrome(List(1, 2, 3, 2, 1)))
+
     //p05
-    println(reverse(List(1, 1, 2, 3, 5, 8)))
+    //println(reverse(List(1, 1, 2, 3, 5, 8)))
 
     //p04
     //println(length(List(1, 1, 2, 3, 5, 8)))
@@ -22,8 +25,12 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
+  //p06
+  def isPalindrome[A](ls: List[A]): Boolean = ls == ls.reverse
+
+
   //p05
-  def reverse[A](ls: List[A]): List[A] = ls.foldLeft(List[A]()) { (r, h) => h :: r }
+  //def reverse[A](ls: List[A]): List[A] = ls.foldLeft(List[A]()) { (r, h) => h :: r }
 
   //def reverse[A](ls: List[A]): List[A] = ls.reverse
 
