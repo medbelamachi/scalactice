@@ -6,18 +6,31 @@ object P01_28 {
 
 
   def main(args: Array[String]): Unit = {
+    //p04
+    println(length(List(1, 1, 2, 3, 5, 8)))
+
     //p03
-    println(nth(4, List(1, 1, 2, 3, 5, 8)))
+    //println(nth(4, List(1, 1, 2, 3, 5, 8)))
+
     //p02
     //println(lastButOneElement_3(0, List(1, 1, 2, 3, 5, 8)))
+
     //p01
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
-  //p03
-  def nth(i: Int, ls: List[Int]): Int = ls(i)
+  //p04
+  def length(ls: List[Int]): Int = ls match {
+    case Nil => 0
+    case _ => 1 + length(ls.tail)
+  }
 
-  /*def nth(i: Int, ls: List[Int]): Int = (i, ls) match {
+  //def length(ls: List[Int]): Int = ls.size
+
+  //p03
+  /*def nth(i: Int, ls: List[Int]): Int = ls(i)
+
+  nth(i: Int, ls: List[Int]): Int = (i, ls) match {
     case (0, _) => ls.head
     case (x, _ :: tail) => nth(x - 1, tail)
     case (_, Nil) => throw new IllegalArgumentException
