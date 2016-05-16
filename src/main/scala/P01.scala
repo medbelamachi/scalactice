@@ -23,10 +23,7 @@ object P01_28 {
   }
 
   //p05
-  def reverse[A](ls: List[A]): List[A] = ls match {
-    case Nil => Nil
-    case h :: tail => reverse(tail) ::: List(h)
-  }
+  def reverse[A](ls: List[A]): List[A] = ls.foldLeft(List[A]()) { (r, h) => h :: r }
 
   //def reverse[A](ls: List[A]): List[A] = ls.reverse
 
