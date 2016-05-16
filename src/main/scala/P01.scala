@@ -1,3 +1,5 @@
+
+
 /**
   * Created by med on 15/05/16.
   * http://aperiodic.net/phil/scala/s-99/
@@ -6,8 +8,15 @@ object P01_28 {
 
 
   def main(args: Array[String]): Unit = {
+
+    //p08
+    println(compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
+
+    //p07
+    //println(flatten(List(List(1, 1), 2, List(3, List(5, 8)))))
+
     //p06
-    println(isPalindrome(List(1, 2, 3, 2, 1)))
+    //println(isPalindrome(List(1, 2, 3, 2, 1)))
 
     //p05
     //println(reverse(List(1, 1, 2, 3, 5, 8)))
@@ -25,8 +34,25 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
+  //p08
+  def compress[A](ls: List[A]): List[A] = ls.foldRight(List[A]()) {
+    (c, r) => if (r.isEmpty || r.head != c) c :: r else r
+  }
+
+  /*def compress[A](ls: List[A]): List[A] = ls match {
+    case Nil => Nil
+    case h :: tail => h :: compress(ls.dropWhile(_ == h))
+  }*/
+
+  //p07
+  /*def flatten(ls: List[Any]): List[Any] = ls.flatMap {
+    case ms: List[_] => flatten(ms)
+    case e => List(e)
+  }*/
+
+
   //p06
-  def isPalindrome[A](ls: List[A]): Boolean = ls == ls.reverse
+  //def isPalindrome[A](ls: List[A]): Boolean = ls == ls.reverse
 
 
   //p05
