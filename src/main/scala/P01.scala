@@ -8,9 +8,24 @@ object P01_28 {
 
 
   def main(args: Array[String]): Unit = {
+    //p14
+    println(duplicate(List('a, 'b, 'c, 'c, 'd)))
+
+    //p13
+    //    println(encodeDirect(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
+
+    //p12
+    //    println(decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))))
+
+
+    //p10 -11
+    //println(encodeModified(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
+
+    //p09
+    //println(pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
 
     //p08
-    println(compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
+    //println(compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
 
     //p07
     //println(flatten(List(List(1, 1), 2, List(3, List(5, 8)))))
@@ -34,10 +49,55 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
-  //p08
-  def compress[A](ls: List[A]): List[A] = ls.foldRight(List[A]()) {
-    (c, r) => if (r.isEmpty || r.head != c) c :: r else r
+  //p14
+  def duplicate[A](ls: List[A]): List[A] = ls flatMap { e => List.fill(2)(e) }
+
+
+  //p13
+  /*  def encodeDirect[A](ls: List[A]): List[(Int, A)] = {
+      if (ls.isEmpty) Nil
+      else {
+        val (span1, span2) = ls span {
+          _ == ls.head
+        }
+        (span1.length, span1.head) :: encodeDirect(span2)
+      }
+
+    }*/
+
+  //p12
+  //  def decode[A](ls: List[(Int, A)]): List[A] = ls flatMap { e => List.fill(e._1)(e._2) }
+
+  /*def decode[A](ls: List[(Int, A)]): List[A] = {
+    def addElem[A](n: Int, ls: List[A]): List[A] = ls match {
+      case _ if n == 0 => Nil
+      case x :: tail => x :: addElem(n - 1, ls)
+    }
+    ls.foldLeft(List[A]()) { (r, c) => r ::: addElem(c._1, c._2 :: r) }
   }
+*/
+
+  //p11
+  //  def encodeModified[A](ls: List[A]): List[Any] = encode(ls) map { e => if (e._1 == 1) e._2 else e }
+
+
+  //p10
+  /*def encode[A](ls: List[A]): List[(Int, A)] = pack(ls).foldLeft(List[(Int, A)]()) {
+    (r, c) => r ::: List((c.length, c.head))
+  }*/
+
+
+  //p09
+  /*def pack[A](ls: List[A]): List[List[A]] = ls match {
+    case Nil => Nil
+    case h :: tail => List(ls.takeWhile(_ == h)) ::: pack(tail.dropWhile(_ == h))
+  }*/
+
+
+  //p08
+  /*def compress[A](ls: List[A]): List[A] = ls.foldRight(List[A]()) {
+    (c, r) => if (r.isEmpty || r.head != c) c :: r else r
+  }*/
 
   /*def compress[A](ls: List[A]): List[A] = ls match {
     case Nil => Nil
