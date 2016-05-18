@@ -9,13 +9,13 @@ object P01_28 {
 
   def main(args: Array[String]): Unit = {
     //p14
-    println(duplicate(List('a, 'b, 'c, 'c, 'd)))
+    println(duplicateN(3, List('a, 'b, 'c, 'c, 'd)))
 
     //p13
-    //    println(encodeDirect(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
+    //println(encodeDirect(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
 
     //p12
-    //    println(decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))))
+    //println(decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))))
 
 
     //p10 -11
@@ -49,8 +49,12 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
+  //p15
+  def duplicateN[A](n: Int, ls: List[A]): List[A] = ls flatMap { e => List.fill(n)(e) }
+
+
   //p14
-  def duplicate[A](ls: List[A]): List[A] = ls flatMap { e => List(e, e) }
+  //def duplicate[A](ls: List[A]): List[A] = ls flatMap { e => List(e, e) }
 
 
   //p13
