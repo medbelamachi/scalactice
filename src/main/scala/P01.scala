@@ -8,8 +8,11 @@ object P01_28 {
 
 
   def main(args: Array[String]): Unit = {
+    //p18
+    println(slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+
     //p17
-    println(split(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+    //println(split(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
 
     //p16
     //println(drop(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
@@ -55,8 +58,11 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
+  //p18
+  def slice[A](s: Int, e: Int, ls: List[A]): List[A] = ls.drop(s).take(e - s)
+
   //p17 // you can use also ls.splitAt(n)
-  def split[A](n: Int, ls: List[A]): (List[A], List[A]) = (ls.take(n), ls.drop(n))
+  //def split[A](n: Int, ls: List[A]): (List[A], List[A]) = (ls.take(n), ls.drop(n))
 
   //p16
   /*def drop[A](n: Int, ls: List[A]): List[A] = ls.zipWithIndex filter { v => (v._2 + 1) % n != 0 } map {
