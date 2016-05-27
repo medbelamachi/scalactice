@@ -55,13 +55,8 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
-  //p17
-  def split[A](n: Int, ls: List[A]): Any = ls.zipWithIndex span {
-    _._2 <= n
-  } match {
-    case (x, y) => (x.map {_._1}, y.map {_._1})
-  }
-
+  //p17 // you can use also ls.splitAt(n)
+  def split[A](n: Int, ls: List[A]): (List[A], List[A]) = (ls.take(n), ls.drop(n))
 
   //p16
   /*def drop[A](n: Int, ls: List[A]): List[A] = ls.zipWithIndex filter { v => (v._2 + 1) % n != 0 } map {
