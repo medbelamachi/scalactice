@@ -8,8 +8,11 @@ object P01_28 {
 
 
   def main(args: Array[String]): Unit = {
+    //p17
+    println(split(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+
     //p16
-    println(drop(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+    //println(drop(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
 
     //p15
     //println(duplicateN(3, List('a, 'b, 'c, 'c, 'd)))
@@ -52,10 +55,18 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
-  //p16
-  def drop[A](n: Int, ls: List[A]): List[A] = ls.zipWithIndex filter { v => (v._2 + 1) % n != 0 } map {
-    _._1
+  //p17
+  def split[A](n: Int, ls: List[A]): Any = ls.zipWithIndex span {
+    _._2 <= n
+  } match {
+    case (x, y) => (x.map {_._1}, y.map {_._1})
   }
+
+
+  //p16
+  /*def drop[A](n: Int, ls: List[A]): List[A] = ls.zipWithIndex filter { v => (v._2 + 1) % n != 0 } map {
+    _._1
+  }*/
 
   /*def drop[A](n: Int, ls: List[A]): List[A] = {
     def dropR(c: Int, curList: List[A]): List[A] = (c, curList) match {
