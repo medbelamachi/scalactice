@@ -59,7 +59,12 @@ object P01_28 {
   }
 
   //p18
-  def slice[A](s: Int, e: Int, ls: List[A]): List[A] = ls.drop(s).take(e - s)
+  def slice[A](s: Int, e: Int, ls: List[A]): List[A] = (s, e, ls) match {
+    case (_, _, Nil) => Nil
+    case (_, 0, _) => Nil
+    case (0, _, h :: tail) => h :: slice(0, e - 1, tail)
+    case (_, _, h :: tail) => slice(s - 1, e - 1, tail)
+  }
 
   //p17 // you can use also ls.splitAt(n)
   //def split[A](n: Int, ls: List[A]): (List[A], List[A]) = (ls.take(n), ls.drop(n))
