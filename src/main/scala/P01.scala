@@ -9,8 +9,11 @@ object P01_28 {
 
   def main(args: Array[String]): Unit = {
 
+    //p21
+    println(insertAt('new, 1, List('a, 'b, 'c, 'd)))
+
     //p20
-    println(removeAt(1, List('a, 'b, 'c, 'd)))
+    //println(removeAt(1, List('a, 'b, 'c, 'd)))
 
     //p19
     //println(rotate(-2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
@@ -65,12 +68,17 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
+  //p21
+  def insertAt[A](x: A, p: Int, ls: List[A]): List[A] = ls.splitAt(p) match {
+    case (pre, post) => pre ::: x :: post
+  }
+
   //p20
-  def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
+  /*def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
     case (Nil, _) if n < 0 => throw new NoSuchElementException
     case (pre, e :: post) => (pre ::: post, e)
     case (pre, Nil) => throw new NoSuchElementException
-  }
+  }*/
 
   /*def removeAt[A](n: Int, ls: List[A]): (List[A], A)  = (n, ls) match {
     case (0, h :: x :: tail) => (h :: tail, x)
