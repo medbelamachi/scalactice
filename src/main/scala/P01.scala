@@ -9,8 +9,11 @@ object P01_28 {
 
   def main(args: Array[String]): Unit = {
 
+    //p23
+    println(randomSelect(3, List('a, 'b, 'c, 'd, 'f, 'g, 'h)))
+
     //p22
-    println(range(4, 9))
+    //println(range(4, 9))
 
     //p21
     //println(insertAt('new, 1, List('a, 'b, 'c, 'd)))
@@ -71,11 +74,19 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
+  //p23
+  def randomSelect[A](n: Int, ls: List[A]): List[A] = if (n <= 0) Nil
+  else {
+    val (rest, e) = removeAt((new util.Random).nextInt(ls.length), ls)
+    e :: randomSelect(n - 1, rest)
+  }
+
+
   //p22
-  def range(s: Int, e: Int): List[Int] = e match {
+  /*def range(s: Int, e: Int): List[Int] = e match {
     case _ if (s <= e) => s :: range(s + 1, e)
     case _ => Nil
-  }
+  }*/
 
   //p21
   /*def insertAt[A](x: A, p: Int, ls: List[A]): List[A] = ls.splitAt(p) match {
@@ -83,11 +94,11 @@ object P01_28 {
   }*/
 
   //p20
-  /*def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
+  def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
     case (Nil, _) if n < 0 => throw new NoSuchElementException
     case (pre, e :: post) => (pre ::: post, e)
     case (pre, Nil) => throw new NoSuchElementException
-  }*/
+  }
 
   /*def removeAt[A](n: Int, ls: List[A]): (List[A], A)  = (n, ls) match {
     case (0, h :: x :: tail) => (h :: tail, x)
@@ -155,7 +166,7 @@ object P01_28 {
     }
     ls.foldLeft(List[A]()) { (r, c) => r ::: addElem(c._1, c._2 :: r) }
   }
-*/
+  */
 
   //p11
   //  def encodeModified[A](ls: List[A]): List[Any] = encode(ls) map { e => if (e._1 == 1) e._2 else e }
