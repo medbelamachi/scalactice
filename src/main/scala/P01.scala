@@ -8,8 +8,15 @@ object P01_28 {
 
 
   def main(args: Array[String]): Unit = {
+
+    //p20
+    println(removeAt(1, List('a, 'b, 'c, 'd)))
+
+    //p19
+    //println(rotate(-2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+
     //p18
-    println(slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+    //println(slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
 
     //p17
     //println(split(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
@@ -58,13 +65,31 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
+  //p20
+  def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
+    case (Nil, _) if n < 0 => throw new NoSuchElementException
+    case (pre, e :: post) => (pre ::: post, e)
+    case (pre, Nil) => throw new NoSuchElementException
+  }
+
+  /*def removeAt[A](n: Int, ls: List[A]): (List[A], A)  = (n, ls) match {
+    case (0, h :: x :: tail) => (h :: tail, x)
+    case (_, _) => removeAt(n - 1, ls)
+  }*/
+
+  //p19
+  /*def rotate[A](n: Int, ls: List[A]): List[A] = (n, ls) match {
+    case (0, _) => ls
+    case (_, h :: tail) => ls.drop(n) ::: ls.take(n)
+  }*/
+
   //p18
-  def slice[A](s: Int, e: Int, ls: List[A]): List[A] = (s, e, ls) match {
+  /* def slice[A](s: Int, e: Int, ls: List[A]): List[A] = (s, e, ls) match {
     case (_, _, Nil) => Nil
     case (_, 0, _) => Nil
     case (0, _, h :: tail) => h :: slice(0, e - 1, tail)
     case (_, _, h :: tail) => slice(s - 1, e - 1, tail)
-  }
+  } */
 
   //p17 // you can use also ls.splitAt(n)
   //def split[A](n: Int, ls: List[A]): (List[A], List[A]) = (ls.take(n), ls.drop(n))
