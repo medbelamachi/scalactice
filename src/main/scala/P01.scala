@@ -9,8 +9,11 @@ object P01_28 {
 
   def main(args: Array[String]): Unit = {
 
+    //p22
+    println(range(4, 9))
+
     //p21
-    println(insertAt('new, 1, List('a, 'b, 'c, 'd)))
+    //println(insertAt('new, 1, List('a, 'b, 'c, 'd)))
 
     //p20
     //println(removeAt(1, List('a, 'b, 'c, 'd)))
@@ -68,10 +71,16 @@ object P01_28 {
     // println(last(List(1, 1, 2, 3, 5, 8)))
   }
 
-  //p21
-  def insertAt[A](x: A, p: Int, ls: List[A]): List[A] = ls.splitAt(p) match {
-    case (pre, post) => pre ::: x :: post
+  //p22
+  def range(s: Int, e: Int): List[Int] = e match {
+    case _ if (s <= e) => s :: range(s + 1, e)
+    case _ => Nil
   }
+
+  //p21
+  /*def insertAt[A](x: A, p: Int, ls: List[A]): List[A] = ls.splitAt(p) match {
+    case (pre, post) => pre ::: x :: post
+  }*/
 
   //p20
   /*def removeAt[A](n: Int, ls: List[A]): (List[A], A) = ls.splitAt(n) match {
